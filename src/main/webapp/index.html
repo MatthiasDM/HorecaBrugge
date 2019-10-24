@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+    <head>
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <link rel="stylesheet"
+              href="//cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.css">
+        <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v6.0.1/build/ol.js"></script>
+        <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v6.0.1/css/ol.css">
+        <script
+        src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script
+        src="//cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.js"></script>
+        <script src="jquery-3.4.1.min.js"></script>
+
+        <script src="view/app.js"></script>
+        <style>
+            .ui-grid-menu-button {
+                height: 31px;
+            }    
+            .grid{
+                height: 600px;                
+            }
+            .map{
+                width: 100%;
+                height: 450px;                
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="jumbotron" id="jumbotron" style="padding: 3rem 4rem;">            
+            <h1 class="display-5" id="text-jumbo-heading">Horeca in Brugge</h1>
+            <p class="lead" id="text-jumbo-info">Restaurants, cafés en hotels</p>
+        </div>
+        <div class="container" id="page-container">
+
+            <div class="row">
+                <div class="col-sm-1 mx-auto"></div>
+                <div class="col-sm-10 mx-auto">
+                    <div ng-controller="StudentCtrl as vm">
+                        <div ui-grid="gridOptions" class="grid" ui-grid-pagination ui-grid-edit ui-grid-selection></div>
+                    </div>
+                </div>
+                <div class="col-sm-1 mx-auto"></div>
+            </div>
+            <br/>
+            <br/>
+            <div class="row">
+
+                <div class="col-sm-12 mx-auto">
+
+                </div>
+
+            </div>
+        </div>
+        <div class="map" id="mapdiv"></div>
+
+        <script>
+            function startMap(lon, lat) {
+                map = new ol.Map({
+                    target: 'mapdiv',
+                    layers: [
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM()
+                        })
+                    ],
+                    view: new ol.View({
+                        center: ol.proj.fromLonLat([lon, lat]),
+                        zoom: 14
+                    })
+                });
+
+            }
+
+        </script>
+        <br/>
+        <br/>
+
+
+    </body>
+</html>
