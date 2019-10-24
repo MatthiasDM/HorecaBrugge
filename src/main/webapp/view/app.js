@@ -65,7 +65,8 @@ app.controller('StudentCtrl', ['$scope', 'ZaakService', function ($scope, ZaakSe
             columnDefs: [
                 {name: 'Naam'},
                 {name: 'StrnmEnHuisnr'},
-                {name: 'Gemeente'}
+                {name: 'Gemeente'},
+                {name: 'rating'}
             ],
             onRegisterApi: function (gridApi) {
                 $scope.gridApi = gridApi;

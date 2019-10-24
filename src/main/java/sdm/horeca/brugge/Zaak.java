@@ -22,6 +22,7 @@ import org.springframework.data.rest.core.config.Projection;
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
+    "id",
     "json_featuretype",
     "naam",
     "formule",
@@ -43,8 +44,8 @@ public class Zaak {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("id")
     private long id;
-
     @JsonProperty("json_featuretype")
     private String jsonFeaturetype;
     @JsonProperty("Naam")
@@ -154,14 +155,20 @@ public class Zaak {
         this.rating = rating;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    
+    
     public int getRating() {
         return rating;
     }
 
     public void setRating(int rating) {
         this.rating = rating;
-    }    
-    
+    }
+
     @JsonProperty("json_featuretype")
     public String getJsonFeaturetype() {
         return jsonFeaturetype;
